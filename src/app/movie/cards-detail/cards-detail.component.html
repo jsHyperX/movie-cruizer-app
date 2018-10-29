@@ -1,0 +1,33 @@
+<mat-card class="card-detail">
+  <mat-card-header>
+    <mat-card-title>{{ detail.title }}</mat-card-title>
+    <mat-card-subtitle>{{ detail.release_date }}</mat-card-subtitle>
+    <mat-card-subtitle><p>
+      <strong *ngIf="detail.adult; else elseblock;">UA</strong>
+      <ng-template #elseblock><strong>18+</strong></ng-template>
+    </p></mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <img mat-card-lg-image src='{{ "https://image.tmdb.org/t/p/w780/"+ detail.poster_path}}' alt={{detail.title}}>
+    <p>
+      <strong>Language: </strong>{{detail.original_language}}
+    </p>
+    <p>
+      <strong>Overview: </strong>{{detail.overview}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="added; else elseBlock;" mat-button (click)="onClick()" >ADD</button>
+    <ng-template #elseBlock>
+      <button mat-button>UPDATE</button>
+      <button mat-button>DELETE</button>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>
+
+<!-- <div>
+  <h1> 'here are the movie details:' </h1>
+  <br>
+  <h2> {{ detail.id }} </h2>
+</div> -->
